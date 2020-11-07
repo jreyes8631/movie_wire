@@ -10,6 +10,19 @@
   </head>
 
   <body>
+  <nav>
+    <% if user_signed_in? %>
+    <%= link_to "Movies", movies_path %>
+    <%= link_to "New movie", new_movie_path %>
+     <%= form_tag(destroy_user_session_path, method: :delete, style:'display: inline-block') do %>
+     <%=submit_tag "Sign out" %>
+    <% end %>
+    <%else %>
+      <%= link_to "Sing up", new_user_registration_path %>
+      <%= link_to "Sing in", new_user_session_path %>
+    <%end  %>
+   
+  </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
