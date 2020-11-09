@@ -1,6 +1,6 @@
-<%= show_error_for(review) %>
+<%= show_error_for(@review) %>
 
-<%= form_for review do |f| %>
+<%= form_for @review do |f| %>
 
 <p><%= f.label :comment %></p>
 <p><%= f.text_field :comment %></p>
