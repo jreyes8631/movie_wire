@@ -1,0 +1,6 @@
+<h1>All Review</h1>
+
+
+<% @review.each do |review| %>
+<p><li><%= link_to review.comment, review_path(review) %> </p></li>
+<% end %>

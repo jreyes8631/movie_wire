@@ -1,0 +1,13 @@
+<%= show_error_for(review) %>
+
+<%= form_for review do |f| %>
+
+<p><%= f.label :comment %></p>
+<p><%= f.text_field :comment %></p>
+
+<p><%= f.label :rating %></p>
+<p><%= f.text_field :rating %></p>
+<%= f.submit %>
+<% end %>
+
+<%= link_to "Back", reviews_path %>
