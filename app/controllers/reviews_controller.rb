@@ -4,34 +4,43 @@ class ReviewsController < ApplicationController
     before_action :authenticate_user!
     
     def index
-      @reviews = Review.all
+      @reviews = current_user.reviews   
     end
 
     def new
-        @review = Review.new
+       @review = Review.new
+    end
+    
+    def show
+      @reviews = current_user.reviews.find(params[:id])
     end
 
     def edit
-
+    set_review
     end
 
     def create
-     @review = Review.new(review_params)
-     if @review.save
-        redirect_to review_path(@review)
-     else
+      @review = current_user.reviews.build(review_params)
+      if @review.save
+        redirect_to review_path(@movie)
+      else
         render :new
-     end
+      end
     end
 
-    def update 
-       @review.update(review_params)
+    def update
+       
+       if @review.update(review_params)
+         redirect_to review_path(@review)
+       else
+         render :edit 
+       end
     end
-    
+
     def destroy
-      @review.destroy
+     @review.destroy
+     redirect_to reviews_path
     end
-
 
 
   private

@@ -2,8 +2,8 @@ class MoviesController < ApplicationController
     before_action :set_movie, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
 
-    def index 
-       @movies = current_user.movies
+    def index
+      @movies = current_user.movies   
     end
 
     def new
@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     end
 
     def edit
-
+    set_movie
     end
 
     def create
@@ -28,11 +28,11 @@ class MoviesController < ApplicationController
     end
 
     def update
-       @movie.update(movie_params)
-       if @movie.update!
-        redirect_to movie_path(@movie)
+       
+       if @movie.update(movie_params)
+         redirect_to movie_path(@movie)
        else
-        render :edit 
+         render :edit 
        end
     end
 
@@ -45,7 +45,7 @@ class MoviesController < ApplicationController
     private
 
     def set_movie
-       @movie = Movie.find_by(id: params[:id])
+       @movie = Movie.find(params[:id])
     end
 
     def movie_params
