@@ -1,9 +1,34 @@
 <h1>Movie listing</h1>
 
 
-<p>Title: <%= @movie.title %></p> <p><%=link_to "Edit Movie", edit_movie_path(@movie)%></p>
+    <p>
+	  <strong>Title:</strong>
+	  <%= @movie.title %>
+	</p>
+
+	<p>
+	  <strong>Description:</strong>
+	  <%= @movie.description %>
+	</p>
+
+	<p>
+	  <strong>Movie length:</strong>
+	  <%= @movie.movie_length %>
+	</p>
+
+	<p>
+	  <strong>Director:</strong>
+	  <%= @movie.director %>
+	</p>
+
+	<p>
+	  <strong>Rating:</strong>
+	  <%= @movie.rating %>
+	</p>
+
+<%= link_to 'Back', movies_path %> |
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to "Add a review", new_review_path %>
-<p><%= link_to "Back", movies_path %>
 <%= form_tag(movie_path(@movie), method: :delete) do %>
 <%= submit_tag "Delete Movie" %>
-<% end %></p>
+<% end %>
