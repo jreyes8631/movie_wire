@@ -1,1 +1,14 @@
-<%= @review.comment %>
+
+
+
+   <p>
+	  <strong>Comment:</strong>
+	  <%= @review.comment %>
+	</p>
+
+    <p>
+	  <strong>Rating:</strong>
+	  <%= @review.rating %>
+	</p>
+
+    <%= link_to 'Back', movies_path %>

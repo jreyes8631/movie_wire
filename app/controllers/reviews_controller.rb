@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     end
 
     def new
-       @review = Review.new
+      @review = Review.new(movie_id: params[:movie_id])
     end
     
     def show
@@ -15,20 +15,19 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-    set_review
+    
     end
 
     def create
       @review = current_user.reviews.build(review_params)
       if @review.save
-        redirect_to review_path(@movie)
+        redirect_to review_path(@review)
       else
         render :new
       end
     end
 
     def update
-       
        if @review.update(review_params)
          redirect_to review_path(@review)
        else
