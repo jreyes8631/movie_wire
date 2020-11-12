@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     end
     
     def show
-      @movies = current_user.movies.find(params[:id])
+      @reviews = show_order_desc
     end
 
     def edit
@@ -37,6 +37,7 @@ class MoviesController < ApplicationController
     end
 
     def destroy
+      set_movie
      @movie.destroy
      redirect_to movies_path
     end

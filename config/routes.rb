@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :reviews
+
   resources :movies do
-    resources :reviews, only: [:index, :new, :show]
+    resources :reviews, except: [:show, :index]
   end
+  
   devise_for :users
   root to: 'movies#index'
 end
