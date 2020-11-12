@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :movies do
     resources :reviews, except: [:show, :index]
   end
-  
-  devise_for :users
+
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'movies#index'
 end

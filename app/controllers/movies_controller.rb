@@ -3,7 +3,11 @@ class MoviesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-      @movies = current_user.movies  
+      @movies = Movie.all  
+    end
+
+    def current_user_movies
+      @movies = current_user.movies 
     end
 
     def new
@@ -37,7 +41,6 @@ class MoviesController < ApplicationController
     end
 
     def destroy
-      set_movie
      @movie.destroy
      redirect_to movies_path
     end
