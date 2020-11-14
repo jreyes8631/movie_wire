@@ -7,5 +7,5 @@ end
  
 
 def self.show_order_desc
-  self.reviews.where(movie_id: @movie.id).order("created_at DESC")
+  self.review.where(movie_id: @movie.id).order("created_at DESC")
 end
