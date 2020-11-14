@@ -3,26 +3,32 @@ class ReviewsController < ApplicationController
     before_action :set_movie
     before_action :authenticate_user!
     
-    # def index
-    #   @reviews = current_user.reviews 
-    # end
-
+    def index
+      @reviews = @movie.reviews 
+    end
+  
     def new
       @review = Review.new(movie_id: params[:movie_id])
     end
     
-    # def show
-    #   @reviews = current_user.reviews.find(params[:id])
-    # end
+    def show
+      @reviews = current_user.reviews.find(params[:id])
+    end
 
     def edit
-    
+     if @review.user.id == current_user.id
+        render :edit
+      else
+        flash[:notice] = "You are not the owener of this record"
+        redirect_to movie_path(@movie)
+      end
     end
 
     def create
       @review = current_user.reviews.build(review_params)
       @review.movie_id = @movie.id
       if @review.save
+        flash[:success] = "Review created successfully"
         redirect_to @movie
       else
         render :new

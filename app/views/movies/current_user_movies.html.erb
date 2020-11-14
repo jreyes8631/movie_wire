@@ -1,9 +1,6 @@
-<h1>All Movies</h1>
+
+<h1>My Movies</h1>
 
 <% @movies.each do |movie| %>
 <p><li><%= link_to movie.title, movie_path(movie) %> </p></li>
 <% end %>
-
-
-
-

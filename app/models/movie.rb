@@ -6,6 +6,6 @@ class Movie < ApplicationRecord
 end
  
 
-def show_order_desc
-  Review.where(movie_id: @movie.id).order("created_at DESC")
+def self.show_order_desc
+  self.reviews.where(movie_id: @movie.id).order("created_at DESC")
 end

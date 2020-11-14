@@ -3,11 +3,15 @@ class MoviesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-      @movies = Movie.all  
+      @movies = Movie.all
     end
 
     def current_user_movies
       @movies = current_user.movies 
+    end
+
+    def current_user_reviews
+     @reviews = current_user.reviews
     end
 
     def new
@@ -19,7 +23,12 @@ class MoviesController < ApplicationController
     end
 
     def edit
-    
+      if @movie.user.id == current_user.id
+        render :edit
+      else
+        flash[:notice] = "You are not the owner of this Movie"
+        redirect_to movie_path(@movie)
+      end
     end
 
     def create
@@ -32,7 +41,6 @@ class MoviesController < ApplicationController
     end
 
     def update
-       
        if @movie.update(movie_params)
          redirect_to movie_path(@movie)
        else
@@ -41,15 +49,21 @@ class MoviesController < ApplicationController
     end
 
     def destroy
-     @movie.destroy
-     redirect_to movies_path
+     if @movie.user.id == current_user.id
+        @movie.destroy
+       redirect_to movies_path
+     else
+       flash[:notice] = "You are not the owner of this Movie"
+       redirect_to movie_path(@movie)
+     end
+
     end
 
 
     private
 
     def set_movie
-       @movie = Movie.find(params[:id])
+      @movie = Movie.find(params[:id])
     end
 
     def movie_params

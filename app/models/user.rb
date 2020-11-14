@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :movies
   has_many :reviews, dependent: :destroy
   has_many :reviewed_movies, through: :reviews, source: :movie
-  validates :full_name, presence: true
+  
 
   def self.from_google(uid:, email:, full_name:, avatar_url:)
    user = User.find_or_create_by(email: email) do |u|

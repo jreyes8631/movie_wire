@@ -1,7 +1,9 @@
  <nav>
     <% if user_signed_in? %>
-      <%= link_to "Movies", movies_path %>
-      <%= link_to "New movie", new_movie_path %>
+      <%= link_to "Movies", movies_path %> |
+      <%= link_to "My movies", current_user_movies_movies_path %> |
+      <%= link_to "My reviews", current_user_reviews_movies_path %> |
+      <%= link_to "New movie", new_movie_path %> |
      <%= form_tag(destroy_user_session_path, method: :delete, style:'display: inline-block') do %>
      <%=submit_tag "Sign out" %>
     <% end %>
