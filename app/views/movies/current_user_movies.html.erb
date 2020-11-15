@@ -1,8 +1,12 @@
 
-<h1>My Movies</h1>
+<% if @movies.blank? %>
+    <h3>There is not movies yet, would you like to add one?</h3>
+    <%= link_to "New movie", new_movie_path %> 
+<% else %>
+    <h1>My Movies</h1>
 
-<% @movies.each do |movie| %>
-<p><li><%= link_to movie.title, movie_path(movie) %> </p></li>
+    <% @movies.each do |movie| %>
+    <p><li><%= link_to movie.title, movie_path(movie) %> </p></li>
+    <% end %>
 <% end %>
-
 <%= link_to 'Back', movies_path %> 

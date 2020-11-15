@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
     end
     
     def show
-      @reviews = show_order_desc
+      @reviews = @movie.reviews.most_recent
     end
 
     def edit

@@ -4,7 +4,7 @@ class Review < ApplicationRecord
 
 
  def self.most_recent
-    order('created_at asc')
+    order('created_at DESC')
   end
   
 end
