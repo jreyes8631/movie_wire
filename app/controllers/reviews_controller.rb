@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     before_action :authenticate_user!
     
     def index
-      @reviews = @movie.reviews 
+      @reviews = @movie.reviews.most_recent
     end
   
     def new

@@ -1,5 +1,10 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :movie
-end
 
+
+ def self.most_recent
+    order('created_at asc')
+  end
+  
+end
