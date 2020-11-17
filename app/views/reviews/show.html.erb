@@ -7,7 +7,7 @@
 
 <strong>Review:</strong> <p><%= @review.rating %></p> 
 <strong>Comment:</strong> <p><%= @review.comment %></p> 
-
+<%= link_to 'edit', edit_movie_review_path(@movie, @review) %>
 <%= link_to 'Back', movie_path(@movie) %>
 
 

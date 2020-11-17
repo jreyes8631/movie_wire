@@ -34,6 +34,7 @@ class MoviesController < ApplicationController
     def create
       @movie = current_user.movies.build(movie_params)
       if @movie.save
+        flash[:notice] = "Movie created succesfully"
         redirect_to movie_path(@movie)
       else
         render :new
@@ -51,6 +52,7 @@ class MoviesController < ApplicationController
     def destroy
      if @movie.user.id == current_user.id
         @movie.destroy
+        flash[:notice] = "Movie Deleted succesfully"
        redirect_to movies_path
      else
        flash[:notice] = "You are not the owner of this Movie"
