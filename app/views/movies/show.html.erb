@@ -28,10 +28,11 @@
 
 
 <%= link_to 'Back', movies_path %> |
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= form_tag(movie_path(@movie), method: :delete) do %>
-<%= submit_tag "Delete Movie" %>
+<% if current_user %>
+	<%= link_to 'Edit', edit_movie_path(@movie) %> |
+	<%= form_tag(movie_path(@movie), method: :delete) do %>
+	<%= submit_tag "Delete Movie" %>
+	<% end %>
 <% end %>
 
 <h1>Reviews:</h1>

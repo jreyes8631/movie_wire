@@ -1,7 +1,13 @@
 
 
 <br>
+<p><strong>Review for:</strong> <%= @movie.title %> </p>
+<br>
+<br>
+
 <strong>Review:</strong> <p><%= @review.rating %></p> 
 <strong>Comment:</strong> <p><%= @review.comment %></p> 
+
+<%= link_to 'Back', movie_path(@movie) %>
 
 

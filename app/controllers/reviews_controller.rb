@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     end
     
     def show
-      @reviews = current_user.reviews.find(params[:id])
+       
     end
 
     def edit
@@ -37,6 +37,7 @@ class ReviewsController < ApplicationController
 
     def update
        if @review.update(review_params)
+        flash[:success] = "Review updated successfully"
          redirect_to review_path(@review)
        else
          render :edit 

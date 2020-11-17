@@ -1,5 +1,7 @@
 <h1>Create Review</h1>
 
+<p><strong>Review for:</strong> <%= @movie.title %> </p>
+
 <%= render partial:'form', locals: {review: @review} %>
 
 <%= link_to 'Back', movie_path(@movie) %>
