@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reviews
+
   resources :movies do
     resources :reviews
     get :current_user_movies, on: :collection
