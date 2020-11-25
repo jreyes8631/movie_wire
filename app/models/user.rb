@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :movies
   has_many :reviews, dependent: :destroy
-  has_many :reviewed_movies, through: :reviews, source: :movie
+ 
   
 
   def self.from_google(uid:, email:, full_name:, avatar_url:)

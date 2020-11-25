@@ -4,10 +4,11 @@ class MoviesController < ApplicationController
 
     def index
       @movies = Movie.all
+      
     end
 
     def current_user_movies
-      @movies = current_user.movies 
+      @movies = current_user.movies
     end
 
     def current_user_reviews

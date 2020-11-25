@@ -8,6 +8,12 @@ class Movie < ApplicationRecord
   def self.most_recent
     order('created_at DESC')
   end
+
+  #randondly select a movie onject to disply that on the page.
+
+  def self.featured 
+    where.not(title: nil).sample
+  end
   
 end
  

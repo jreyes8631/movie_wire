@@ -1,4 +1,7 @@
 
+<h2>Featured:</h2><%= @movies.featured.title%>
+
+
 <% if @movies.blank? %>
     <h1>There are no movies yet, would you like to add one?</h1>
     <%= link_to "New movie", new_movie_path %>
@@ -6,8 +9,13 @@
     <h1>All Movies</h1>
     <% @movies.each do |movie| %>
     <p><li><%= link_to movie.title, movie_path(movie) %> </p></li>
+    
     <% end %>
 <% end %>
+
+
+
+
 
 
 
